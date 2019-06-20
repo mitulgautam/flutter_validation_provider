@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_validation_provider/user_model.dart';
+import 'package:flutter_validation_provider/validator.dart';
 
 class SignUpModel with ChangeNotifier {
   bool _autoValidate = false;
@@ -28,5 +29,21 @@ class SignUpModel with ChangeNotifier {
       return true;
     }
     return false;
+  }
+
+  String validateName(String name) {
+    return Validator.validateName(name);
+  }
+
+  String validatePassword(String password) {
+    return Validator.validatePassword(password);
+  }
+
+  String validateEmail(String email) {
+    return Validator.validateEmail(email);
+  }
+
+  String validateConfirmPassword(String password, String confirmPassword) {
+    return Validator.confirmPassword(password, confirmPassword);
   }
 }

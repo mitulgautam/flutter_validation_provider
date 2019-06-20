@@ -1,7 +1,6 @@
 class Validator {
   static String validateEmail(String email) {
-    return email.contains('@') &&
-            email.length > 5 && email.contains('.')
+    return RegExp(r"^[a-zA-Z0-9.]+@[a-zA-Z0-9]+\.[a-zA-Z]+").hasMatch(email)
         ? null
         : 'Enter valid email.';
   }
@@ -17,7 +16,7 @@ class Validator {
   }
 
   static String confirmPassword(String password, String confirmPassword) {
-    return password == confirmPassword
+    return password == confirmPassword && confirmPassword.length > 5
         ? null
         : 'Password does not match! Re-enter.';
   }

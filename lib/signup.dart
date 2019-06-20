@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_validation_provider/signup_model.dart';
 import 'package:provider/provider.dart';
-import 'validator.dart';
 
 class SignUp extends StatefulWidget {
   @override
@@ -36,7 +35,7 @@ class _SignUpState extends State<SignUp> {
                   padding: const EdgeInsets.only(top: 16.0, bottom: 16.0),
                   child: TextFormField(
                     validator: (name) {
-                      return Validator.validateName(name);
+                      return model.validateName(name);
                     },
                     onSaved: (name) {
                       model.user.name = name;
@@ -53,7 +52,7 @@ class _SignUpState extends State<SignUp> {
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: TextFormField(
                     validator: (email) {
-                      return Validator.validateEmail(email);
+                      return model.validateEmail(email);
                     },
                     onSaved: (email) {
                       model.user.email = email;
@@ -69,8 +68,7 @@ class _SignUpState extends State<SignUp> {
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: TextFormField(
                     validator: (password) {
-                      return Validator.validatePassword(password);
-                      model.user.password = password;
+                      return model.validatePassword(password);
                     },
                     onSaved: (password) {
                       _password.text = password;
@@ -87,7 +85,7 @@ class _SignUpState extends State<SignUp> {
                   padding: const EdgeInsets.only(bottom: 16.0),
                   child: TextFormField(
                     validator: (confirmPassword) {
-                      return Validator.confirmPassword(
+                      return model.validateConfirmPassword(
                           _password.text, confirmPassword);
                     },
                     onSaved: (password) {
